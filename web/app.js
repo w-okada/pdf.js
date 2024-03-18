@@ -169,6 +169,11 @@ const PDFViewerApplication = {
   _lastScrollTop: 0,
   _lastScrollLeft: 0,
 
+  pageRenderedCallback: null,
+  setPagedRenderedCallback: function (callback) {
+    this.pageRenderedCallback = callback;
+  },
+
   // Called once when the document is loaded.
   async initialize(appConfig) {
     let l10nPromise;
@@ -2311,6 +2316,9 @@ function webViewerPageRendered({ pageNumber, error }) {
     PDFViewerApplication.l10n.get("pdfjs-rendering-error").then(msg => {
       PDFViewerApplication._otherError(msg, error);
     });
+  }
+  if (PDFViewerApplication.pageRenderedCallback) {
+    PDFViewerApplication.pageRenderedCallback(pageNumber);
   }
 }
 
