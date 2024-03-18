@@ -208,7 +208,6 @@ class SecondaryToolbar {
 
     // All items within the secondary toolbar.
     for (const { element, eventName, close, eventDetails } of buttons) {
-      console.log("button", element, "eventName", eventName, "close", close, "eventDetails", eventDetails);
       element.addEventListener("click", evt => {
         if (eventName !== null) {
           eventBus.dispatch(eventName, { source: this, ...eventDetails });
