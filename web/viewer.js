@@ -74,10 +74,10 @@ function getViewerConfiguration() {
       toolbar: document.getElementById("secondaryToolbar"),
       toggleButton: document.getElementById("secondaryToolbarToggle"),
       presentationModeButton: document.getElementById("presentationMode"),
-      openFileButton:
-        typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")
-          ? document.getElementById("secondaryOpenFile")
-          : null,
+      // openFileButton:
+      //   typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")
+      //     ? document.getElementById("secondaryOpenFile")
+      //     : null,
       printButton: document.getElementById("secondaryPrint"),
       downloadButton: document.getElementById("secondaryDownload"),
       viewBookmarkButton: document.getElementById("viewBookmark"),

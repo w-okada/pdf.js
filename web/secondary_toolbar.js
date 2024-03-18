@@ -141,13 +141,13 @@ class SecondaryToolbar {
         close: true,
       },
     ];
-    if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
-      buttons.push({
-        element: options.openFileButton,
-        eventName: "openfile",
-        close: true,
-      });
-    }
+    // if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
+    //   buttons.push({
+    //     element: options.openFileButton,
+    //     eventName: "openfile",
+    //     close: true,
+    //   });
+    // }
 
     this.eventBus = eventBus;
     this.opened = false;
@@ -208,6 +208,7 @@ class SecondaryToolbar {
 
     // All items within the secondary toolbar.
     for (const { element, eventName, close, eventDetails } of buttons) {
+      console.log("button", element, "eventName", eventName, "close", close, "eventDetails", eventDetails);
       element.addEventListener("click", evt => {
         if (eventName !== null) {
           eventBus.dispatch(eventName, { source: this, ...eventDetails });

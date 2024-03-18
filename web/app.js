@@ -393,19 +393,19 @@ const PDFViewerApplication = {
       FeatureTest.isOffscreenCanvasSupported;
     const pageColors =
       AppOptions.get("forcePageColors") ||
-      window.matchMedia("(forced-colors: active)").matches
+        window.matchMedia("(forced-colors: active)").matches
         ? {
-            background: AppOptions.get("pageColorsBackground"),
-            foreground: AppOptions.get("pageColorsForeground"),
-          }
+          background: AppOptions.get("pageColorsBackground"),
+          foreground: AppOptions.get("pageColorsForeground"),
+        }
         : null;
     const altTextManager = appConfig.altTextDialog
       ? new AltTextManager(
-          appConfig.altTextDialog,
-          container,
-          this.overlayManager,
-          eventBus
-        )
+        appConfig.altTextDialog,
+        container,
+        this.overlayManager,
+        eventBus
+      )
       : null;
 
     const pdfViewer = new PDFViewer({
@@ -493,7 +493,7 @@ const PDFViewerApplication = {
         this.overlayManager,
         eventBus,
         l10n,
-        /* fileNameLookup = */ () => this._docFilename
+        /* fileNameLookup = */() => this._docFilename
       );
     }
 
@@ -642,18 +642,18 @@ const PDFViewerApplication = {
         evt.dataTransfer.dropEffect =
           evt.dataTransfer.effectAllowed === "copy" ? "copy" : "move";
       });
-      appConfig.mainContainer.addEventListener("drop", function (evt) {
-        evt.preventDefault();
+      // appConfig.mainContainer.addEventListener("drop", function (evt) {
+      //   evt.preventDefault();
 
-        const { files } = evt.dataTransfer;
-        if (!files || files.length === 0) {
-          return;
-        }
-        eventBus.dispatch("fileinputchange", {
-          source: this,
-          fileInput: evt.dataTransfer,
-        });
-      });
+      //   const { files } = evt.dataTransfer;
+      //   if (!files || files.length === 0) {
+      //     return;
+      //   }
+      //   eventBus.dispatch("fileinputchange", {
+      //     source: this,
+      //     fileInput: evt.dataTransfer,
+      //   });
+      // });
     }
 
     if (!AppOptions.get("supportsDocumentFonts")) {
@@ -1528,8 +1528,8 @@ const PDFViewerApplication = {
     // Provides some basic debug information
     console.log(
       `PDF ${pdfDocument.fingerprints[0]} [${info.PDFFormatVersion} ` +
-        `${(info.Producer || "-").trim()} / ${(info.Creator || "-").trim()}] ` +
-        `(PDF.js: ${version || "?"} [${build || "?"}])`
+      `${(info.Producer || "-").trim()} / ${(info.Creator || "-").trim()}] ` +
+      `(PDF.js: ${version || "?"} [${build || "?"}])`
     );
     let pdfTitle = info.Title;
 
@@ -2199,7 +2199,7 @@ const PDFViewerApplication = {
     document.blockUnblockOnload?.(false);
 
     // Ensure that this method is only ever run once.
-    this._unblockDocumentLoadEvent = () => {};
+    this._unblockDocumentLoadEvent = () => { };
   },
 
   /**
